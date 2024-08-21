@@ -3,7 +3,7 @@ name: Trigger TRES
 on: 
   workflow_dispatch:
     secrets:
-      PAT_DOS:
+      E2E_TESTS_PAT:
         required: true
 
 jobs:
@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/github-script@v6
       with:
-        github-token: ${{ secrets.PAT_DOS }}
+        github-token: ${{ secrets.E2E_TESTS_PAT }}
         script: |
           const result = await github.rest.repos.createDispatchEvent({
             owner: 'OasisDEX',
@@ -28,12 +28,12 @@ jobs:
 #     name: 'Trigger job TRES'
 #     runs-on: ubuntu-latest
 #     env:
-#       PAT_DOS: ${{ secrets.PAT_DOS }}
+#       E2E_TESTS_PAT: ${{ secrets.E2E_TESTS_PAT }}
 #     steps:
 #       - name: Trigger e2e-tests Workflow
 #         uses: actions/workflow-dispatch@v3
 #         with:
-#           github-token: ${{ secrets.PAT_DOS }}
+#           github-token: ${{ secrets.E2E_TESTS_PAT }}
 #           workflow_id: 'received' # Replace with the ID of Workflow-B
 #           owner: 'OasisDEX'
 #           repository: 'e2e-tests' # Replace with the owner and repository name of Repository-B
