@@ -12,7 +12,9 @@ jobs:
   testing-something:
     name: 'Testingenv variables job'
     runs-on: ubuntu-latest
-    if: ${{ secrets.TESTING == 'failure' }}
+    env:
+      TESTING: ${{ secrets.TESTING }}
+    if: ${{ secrets.TESTING == '' }}
     steps:
       - run: echo 'Env variables work'
   trigger-job:
