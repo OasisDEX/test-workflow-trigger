@@ -18,7 +18,8 @@ jobs:
         with:
           github-token: ${{ secrets.PAT_DOS }}
           workflow_id: 'received' # Replace with the ID of Workflow-B
-          repository: 'OasisDEX/e2e-tests' # Replace with the owner and repository name of Repository-B
+          owner: 'OasisDEX'
+          repository: 'e2e-tests' # Replace with the owner and repository name of Repository-B
       - name: Log e2e-tests Workflow URL
         run: |
           echo "e2e-tests workflow URL: https://github.com/OasisDEX/e2e-tests/actions/runs/${{ steps.trigger-job.outputs.run_id }}" >> $GITHUB_OUTPUT
