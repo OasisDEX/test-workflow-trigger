@@ -1,4 +1,4 @@
-name: Trigger
+name: Trigger CUATRO
 
 on: 
   workflow_dispatch:
