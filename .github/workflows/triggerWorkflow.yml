@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TESTING: ${{ secrets.TESTING }}
-    if: ${{ secrets.TESTING == '' }}
+    if: ${{ env.TESTING == '' }}
     steps:
       - run: echo 'Env variables work'
   trigger-job:
