@@ -1,4 +1,4 @@
-name: E2E tests result
+name: Staging E2E tests result
 
 on: 
   workflow_dispatch:
