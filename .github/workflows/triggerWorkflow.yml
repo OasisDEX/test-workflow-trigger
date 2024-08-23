@@ -10,8 +10,6 @@ jobs:
   e2e-tests:
     name: 'Regression E2E tests'
     runs-on: ubuntu-latest
-    # env:
-    #   E2E_TESTS_PAT: ${{ secrets.E2E_TESTS_PAT }}
     steps:
       - run: echo 'RUN ID is ${{ github.run_id }} --'
       - name: Triggering regression e2e tests in e2e-test repository
