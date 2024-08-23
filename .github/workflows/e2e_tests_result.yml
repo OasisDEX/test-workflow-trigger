@@ -1,0 +1,48 @@
+name: E2E tests result
+
+on: 
+  workflow_dispatch:
+    inputs:
+      tests_run_id:
+        description: 'E2E tests run_id'
+        type: string
+        required: true
+      tests_result:
+        description: 'E2E tests result -- faillure | success'
+        type: string
+        required: true
+
+jobs:
+  e2e-tests-result:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Link to tests run -> https://github.com/OasisDEX/e2e-tests/actions/runs/${{ inputs.tests_run_id }}
+        run: echo 'See tests results in https://github.com/OasisDEX/e2e-tests/actions/runs/${{ inputs.tests_run_id }}'
+      - name: Test results failed
+        if: ${{ inputs.tests_result == 'failure' }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            core.setFailed('E2E tests failed')
+      - name: Test results passed
+        if: ${{ inputs.tests_result == 'success' }}
+        run: echo 'CI E2E tests passed'
+
+
+  # on-ci-e2e-tests-failure:
+  #   runs-on: ubuntu-latest
+  #   if: ${{ inputs.tests_result == 'failure' }}
+  #   steps:
+  #     - run: echo 'E2E tests passed'
+  #     - name: E2E tests failed
+  #       uses: actions/github-script@v7
+  #       with:
+  #         script: |
+  #           core.setFailed('E2E tests failed')
+  # on-ci-e2e-tests-success:
+  #   runs-on: ubuntu-latest
+  #   if: ${{ inputs.tests_result == 'success' }}
+  #   steps:
+  #     - run: echo 'E2E tests passed'
+  #     - run: echo 'See test results in https://github.com/OasisDEX/e2e-tests/actions/runs/${{ inputs.tests_run_id }}'
+      
