@@ -27,22 +27,3 @@ jobs:
       - name: Test results passed
         if: ${{ inputs.tests_result == 'success' }}
         run: echo 'CI E2E tests passed'
-
-
-  # on-ci-e2e-tests-failure:
-  #   runs-on: ubuntu-latest
-  #   if: ${{ inputs.tests_result == 'failure' }}
-  #   steps:
-  #     - run: echo 'E2E tests passed'
-  #     - name: E2E tests failed
-  #       uses: actions/github-script@v7
-  #       with:
-  #         script: |
-  #           core.setFailed('E2E tests failed')
-  # on-ci-e2e-tests-success:
-  #   runs-on: ubuntu-latest
-  #   if: ${{ inputs.tests_result == 'success' }}
-  #   steps:
-  #     - run: echo 'E2E tests passed'
-  #     - run: echo 'See test results in https://github.com/OasisDEX/e2e-tests/actions/runs/${{ inputs.tests_run_id }}'
-      
