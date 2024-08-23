@@ -1,4 +1,4 @@
-name: Trigger
+name: Trigger - Discarded
 
 on: 
   workflow_dispatch:
