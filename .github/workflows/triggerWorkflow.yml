@@ -14,6 +14,7 @@ jobs:
       - run: echo 'RUN ID is ${{ github.run_id }} --'
       - name: Triggering regression e2e tests in e2e-test repository
         run: |
+          echo 'RUN ID is ${{ github.run_id }} --'
           curl -L \
             -X POST \
             -H "Accept: application/vnd.github+json" \
